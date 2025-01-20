@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class Student {
     private String id;
-    private String[] somearray;
+    private String[] details;
 
-    public Student(String id, String[] somearray) {
+    public Student(String id, String[] details) {
         this.id = id;
-        this.somearray = somearray;
+        this.details = details;
     }
 
     public String getID() {
         return id;
     }
 
-    public String[] getSomeArray() {
-        return somearray;
+    public String[] getDetails() {
+        return details;
     }
 }

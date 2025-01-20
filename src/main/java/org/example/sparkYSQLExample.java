@@ -28,8 +28,8 @@ public class sparkYSQLExample {
         connectionProperties.put("password", "yugabyte");
 
         List<Student> data = Arrays.asList(
-                new Student("abc", new String[]{"a", "b", "c"}),
-                new Student("def", new String[]{"d", "e", "f"})
+                new Student("1", new String[]{"John", "35", "Java"}),
+                new Student("2", new String[]{"Mark", "23", "Python"})
         );
 
         // Create a DataFrame directly from the list of objects
