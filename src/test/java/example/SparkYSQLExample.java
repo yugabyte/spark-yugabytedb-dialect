@@ -1,18 +1,18 @@
-package org.example;
+package example;
 
-import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
+import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.jdbc.YugabyteDBDialect;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
-import org.apache.spark.sql.jdbc.YugabytedbDialect;
 
-public class sparkYSQLExample {
+public class SparkYSQLExample {
 
     public static void main(String[] args) {
-        YugabytedbDialect.register();
+        YugabyteDBDialect.register();
 
         //Create the spark session to work with spark
         SparkSession spark = SparkSession

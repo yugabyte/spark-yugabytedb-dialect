@@ -23,7 +23,7 @@ import org.apache.spark.sql.execution.datasources.jdbc.{JDBCOptions, JdbcUtils}
 import org.apache.spark.sql.types._
 
 
-object YugabytedbDialect extends JdbcDialect {
+object YugabyteDBDialect extends JdbcDialect {
 
   override def canHandle(url: String): Boolean = url.startsWith("jdbc:yugabyte")
 
@@ -126,7 +126,7 @@ object YugabytedbDialect extends JdbcDialect {
   }
 
   def register(): Unit = {
-    JdbcDialects.registerDialect(YugabytedbDialect)
+    JdbcDialects.registerDialect(YugabyteDBDialect)
   }
 
 }

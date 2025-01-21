@@ -1,6 +1,4 @@
-package org.example;
-
-import java.util.ArrayList;
+package example;
 
 public class Student {
     private String id;
