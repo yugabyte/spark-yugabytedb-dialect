@@ -45,7 +45,12 @@ Include the dependency in your application's pom.xml
 </dependency>
 ```
 
-#### 3. Run the Test
+#### 3. Publish the jar on mvn central
+```shell
+mvn deploy -Dgpg.keyname=thekeyid
+```
+
+### 4. Run the Test
 Create `ysql_spark` Schema on your cluster
 ```bash
 create schema ysql_spark;
