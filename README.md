@@ -28,7 +28,7 @@ git clone https://github.com/yugabyte/spark-yugabytedb-dialect-example.git
 cd spark-yugabytedb-dialect-example
 ```
 
-#### 2. Build and Publish the Jar Locally
+#### 2. Build the Jar 
 ```bash
 mvn clean package
 ```
@@ -41,7 +41,7 @@ Include the dependency in your application's pom.xml
 <dependency>
     <groupId>com.yugabyte</groupId>
     <artifactId>spark-yugabytedb-dialect</artifactId>
-    <version>1.0</version>
+    <version>3.5.4-yb-1</version>
 </dependency>
 ```
 
