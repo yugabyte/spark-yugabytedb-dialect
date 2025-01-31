@@ -20,7 +20,7 @@ By using this dialect, you enable seamless integration of YugabyteDB with Apache
 2. **JDK:** Install JDK 8 or JDK 11.
 3. **Maven:** Ensure Maven is installed for building the application.
 
-### Build and Run the Application
+### Build the Jar locally
 
 #### 1. Clone the Repository
 ```bash
@@ -28,30 +28,38 @@ git clone https://github.com/yugabyte/spark-yugabytedb-dialect-example.git
 cd spark-yugabytedb-dialect-example
 ```
 
-#### 2. Update Configuration (Optional)
-- Edit the JDBC URL, username, and password in the `sparkSQLJavaExample` class if needed:
-  ```java
-  String jdbcUrlYB = "jdbc:yugabytedb://localhost:5433/yugabyte";
-  Properties connectionProperties = new Properties();
-  connectionProperties.put("user", "yugabyte");
-  connectionProperties.put("password", "yugabyte");
-  ```
-
-#### 3. Create `ysql_spark` Schema on your cluster
-```bash
-create schema ysql_spark;
-```
-#### 4. Build the Application
+#### 2. Build the Jar 
 ```bash
 mvn clean package
 ```
-This will generate a JAR file in the `target` directory, e.g., `sparkSQLJavaExample-1.0-SNAPSHOT.jar`.
-
-#### 5. Run the Application
-```bash
-mvn exec:java
+This will generate a JAR file in the `target` directory
+```shell
+mvn install
 ```
-#### 6. Verify Output
+Include the dependency in your application's pom.xml
+```xml
+<dependency>
+    <groupId>com.yugabyte</groupId>
+    <artifactId>spark-yugabytedb-dialect</artifactId>
+    <version>3.5.4-yb-1</version>
+</dependency>
+```
+
+#### 3. Publish the jar on mvn central
+```shell
+mvn deploy -Dgpg.keyname=thekeyid
+```
+
+### 4. Run the Test
+Create `ysql_spark` Schema on your cluster
+```bash
+create schema ysql_spark;
+```
+Run the test:
+```bash
+mvn exec:java -Dexec.mainClass="org.example.SparkYSQLExample" -Dexec.classpathScope="test"
+```
+Verify Output:
 - The application will insert data into the `ysql_spark.student` table and retrieve the following data:
 ```shell
 +---+------------------+

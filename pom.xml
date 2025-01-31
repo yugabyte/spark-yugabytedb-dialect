@@ -3,10 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>org.example</groupId>
-    <artifactId>spark-yugabytedb-dialect-example</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>com.yugabyte</groupId>
+    <artifactId>spark-yugabytedb-dialect_2.12</artifactId>
+    <version>3.5.4-yb-1</version>
+    <name>Spark YugabyteDB Dialect</name>
+    <description>Spark Dialect for YugabyteDB</description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -17,18 +18,14 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql_2.11</artifactId>
-            <version>2.4.2</version>
+            <artifactId>spark-sql_2.12</artifactId>
+            <version>3.5.4</version>
         </dependency>
+
         <dependency>
             <groupId> com.yugabyte</groupId>
             <artifactId>jdbc-yugabytedb</artifactId>
-            <version>42.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.2.14</version>
+            <version>42.7.3-yb-2</version>
         </dependency>
     </dependencies>
     <build>
@@ -53,9 +50,49 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <mainClass>org.example.sparkYSQLExample</mainClass>
+                    <mainClass>org.example.SparkYSQLExample</mainClass>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/yugabyte/spark-yugabytedb-dialect.git</url>
+        <connection>scm:git:git@github.com:YugaByte/spark-yugabytedb-dialect.git</connection>
+        <developerConnection>scm:git:git@github.com:YugaByte/spark-yugabytedb-dialect.git</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <name>Yugabyte Development Team</name>
+            <email>info@yugabyte.com</email>
+            <organization>YugaByte, Inc.</organization>
+            <organizationUrl>https://www.yugabyte.com</organizationUrl>
+        </developer>
+    </developers>
+    <distributionManagement>
+        <repository>
+            <id>${yugabyte.releases.repository.id}</id>
+            <url>${yugabyte.releases.repository.url}</url>
+        </repository>
+    </distributionManagement>
 </project>
