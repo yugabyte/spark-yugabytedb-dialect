@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.yugabyte</groupId>
-    <artifactId>spark-yugabytedb-dialect_2.13</artifactId>
+    <artifactId>spark-yugabytedb-dialect_2.12</artifactId>
     <version>3.5.4-yb-1</version>
     <name>Spark YugabyteDB Dialect</name>
     <description>Spark Dialect for YugabyteDB</description>
@@ -25,12 +25,7 @@
         <dependency>
             <groupId> com.yugabyte</groupId>
             <artifactId>jdbc-yugabytedb</artifactId>
-            <version>42.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.2.14</version>
+            <version>42.7.3-yb-2</version>
         </dependency>
     </dependencies>
     <build>
