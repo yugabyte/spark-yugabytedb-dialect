@@ -8,6 +8,7 @@
     <version>3.5.4-yb-1</version>
     <name>Spark YugabyteDB Dialect</name>
     <description>Spark Dialect for YugabyteDB</description>
+    <url>https://github.com/yugabyte/spark-yugabytedb-dialect</url>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -43,6 +44,13 @@
                             <goal>add-source</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>attach-scaladocs</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>doc-jar</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
@@ -63,6 +71,40 @@
                         <phase>verify</phase>
                         <goals>
                             <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.4.1</version>
+                <executions>
+                    <execution>
+                        <id>scaladoc</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <sourcepath>${project.basedir}/src/main/scala</sourcepath>
+                            <doclet>scala.tools.nsc.ScalaDoc</doclet>
+                            <additionalOptions>-groups</additionalOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Generate Sources JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>

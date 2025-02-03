@@ -34,9 +34,19 @@ import org.apache.spark.sql.execution.datasources.jdbc.{JDBCOptions, JdbcUtils}
 import org.apache.spark.sql.execution.datasources.v2.TableSampleInfo
 import org.apache.spark.sql.types._
 
-
+/**
+ * A custom JDBC dialect for YugabyteDB, extending Spark's `JdbcDialect`.
+ * This dialect provides handling for YugabyteDB-specific data types,
+ * function support, and SQL query generation.
+ */
 private object YugabyteDBDialect extends JdbcDialect with SQLConfHelper {
 
+  /**
+   * Checks whether this dialect can handle a given JDBC URL.
+   *
+   * @param url The JDBC URL.
+   * @return True if the URL starts with "jdbc:yugabytedb", otherwise false.
+   */
   override def canHandle(url: String): Boolean =
     url.toLowerCase(Locale.ROOT).startsWith("jdbc:yugabytedb")
 
